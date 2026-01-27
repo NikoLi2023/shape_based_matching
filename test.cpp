@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cv;
 
-static std::string prefix = "/home/meiqua/shape_based_matching/test/";
+static std::string prefix = "/Users/jackie/Desktop/LearningJournal/ShapeBasedMatching/shape_based_matching/test/";
 
 class Timer
 {
@@ -322,7 +322,7 @@ void angle_test(string mode = "test", bool use_rot = true){
         auto matches = detector.match(img, 90, ids);
         timer.out();
 
-        if(img.channels() == 1) cvtColor(img, img, CV_GRAY2BGR);
+        if(img.channels() == 1) cvtColor(img, img, cv::COLOR_GRAY2BGR);
 
         std::cout << "matches.size(): " << matches.size() << std::endl;
         size_t top5 = 1;
@@ -507,8 +507,13 @@ void MIPP_test(){
 }
 
 int main(){
-    // scale_test("test");
+    std::cout << "shape_based_matching test" << std::endl;
+    std::cout << "=========================" << std::endl << std::endl;
+    
+    scale_test("test");
     angle_test("test", true); // test or train
-    // noise_test("test");
+    noise_test("test");
+
+    std::cout<< "All tests done." << std::endl;
     return 0;
 }
